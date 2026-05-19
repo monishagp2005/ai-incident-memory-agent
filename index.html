@@ -1,0 +1,390 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AI Incident Memory Agent</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet" />
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <canvas id="neural-canvas" aria-hidden="true"></canvas>
+    <div class="aurora aurora-a"></div>
+    <div class="aurora aurora-b"></div>
+    <div class="scanline"></div>
+
+    <main class="shell">
+      <nav class="topbar">
+        <a class="brand" href="#top" aria-label="AI Incident Memory Agent home">
+          <span class="brand-mark"></span>
+          <span>AI INCIDENT MEMORY AGENT</span>
+        </a>
+        <div class="nav-actions" aria-label="Primary navigation">
+          <a href="#memory">Memory</a>
+          <a href="#intelligence">Intelligence</a>
+          <a href="#agent">Agent</a>
+          <a href="#stack">Stack</a>
+        </div>
+        <button class="status-pill" type="button">
+          <span class="live-dot"></span>
+          Live Memory
+        </button>
+      </nav>
+
+      <section id="top" class="hero section-grid">
+        <div class="hero-copy">
+          <div class="eyebrow">
+            <span class="signal"></span>
+            Autonomous operational memory online
+          </div>
+          <h1>AI INCIDENT MEMORY AGENT</h1>
+          <p class="subhead">Never solve the same production problem twice.</p>
+          <p class="hero-body">
+            A living incident brain that remembers outages, reconstructs root causes, connects hidden patterns, and turns production history into instant recommended action.
+          </p>
+          <div class="cta-row">
+            <a class="btn primary" href="#search">Try AI Agent</a>
+            <a class="btn secondary" href="#search">Analyze Incident</a>
+            <a class="btn ghost" href="#demo">View Live Demo</a>
+          </div>
+          <div class="stats-grid" aria-label="Live platform statistics">
+            <div class="stat">
+              <strong data-count="48219">0</strong>
+              <span>Incidents remembered</span>
+            </div>
+            <div class="stat">
+              <strong data-count="12840">0</strong>
+              <span>Engineer hours saved</span>
+            </div>
+            <div class="stat">
+              <strong data-count="96">0</strong>
+              <span>Resolution accuracy</span>
+            </div>
+            <div class="stat">
+              <strong data-count="318">0</strong>
+              <span>Teams protected</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual" id="demo" aria-label="AI incident memory flow visualization">
+          <div class="orbital-core">
+            <div class="orbit orbit-one"></div>
+            <div class="orbit orbit-two"></div>
+            <div class="core-ring"></div>
+            <div class="core">
+              <span>AI</span>
+              <small>memory engine</small>
+            </div>
+          </div>
+          <div class="flow-card flow-a">
+            <span>Past incidents</span>
+            <strong>4,812 matched</strong>
+          </div>
+          <div class="flow-card flow-b">
+            <span>Recommendations</span>
+            <strong>7 actions ranked</strong>
+          </div>
+          <div class="flow-card flow-c">
+            <span>Instant resolution</span>
+            <strong>12 min ETA</strong>
+          </div>
+          <div class="memory-stream">
+            <i></i><i></i><i></i><i></i><i></i>
+          </div>
+        </div>
+      </section>
+
+      <section id="search" class="workspace">
+        <div class="section-heading">
+          <span class="kicker">Semantic incident recall</span>
+          <h2>Ask the memory. Get the fix.</h2>
+          <p>Type a production symptom and the agent retrieves similar outages, previous fixes, owners, confidence scores, and timelines.</p>
+        </div>
+
+        <div class="ops-console glass">
+          <div class="ops-left">
+            <span class="kicker">Live production simulator</span>
+            <h3 id="live-signal-title">Checkout latency anomaly detected</h3>
+            <p id="live-signal-copy">The agent is watching traces, deploy markers, and incident memory for early warning signals.</p>
+          </div>
+          <div class="ops-metrics">
+            <button type="button" data-sim="payment gateway timeout cascade">
+              <strong id="sim-risk">74</strong>
+              <span>Risk</span>
+            </button>
+            <button type="button" data-sim="database overload checkout latency spike">
+              <strong id="sim-blast">18%</strong>
+              <span>Blast radius</span>
+            </button>
+            <button type="button" data-sim="kafka consumer lag fulfillment delay">
+              <strong id="sim-eta">36m</strong>
+              <span>Failure ETA</span>
+            </button>
+          </div>
+          <button class="btn primary" id="simulate-btn" type="button">Simulate Incident</button>
+        </div>
+
+        <div class="command-center">
+          <div class="search-panel glass">
+            <label for="incident-query">Incident signal</label>
+            <div class="search-box">
+              <input id="incident-query" value="Payment service timeout issue" autocomplete="off" />
+              <button id="analyze-btn" type="button">Analyze</button>
+            </div>
+            <div class="filter-row" aria-label="Incident memory filters">
+              <select id="service-filter" aria-label="Filter by service">
+                <option value="all">All services</option>
+                <option value="payments">Payments</option>
+                <option value="checkout">Checkout</option>
+                <option value="events">Events</option>
+              </select>
+              <select id="severity-filter" aria-label="Filter by severity">
+                <option value="all">All severities</option>
+                <option value="sev1">SEV1</option>
+                <option value="sev2">SEV2</option>
+                <option value="sev3">SEV3</option>
+              </select>
+            </div>
+            <div class="suggestions" aria-label="Intelligent suggestions">
+              <button type="button">checkout latency spike</button>
+              <button type="button">database overload</button>
+              <button type="button">kafka consumer lag</button>
+            </div>
+            <div class="thinking" id="thinking">
+              <span></span><span></span><span></span>
+              AI correlating tickets, traces, deploys, and runbooks
+            </div>
+            <form class="add-incident" id="add-incident-form">
+              <div class="form-title">
+                <strong>Add incident memory</strong>
+                <span>Teach the agent a new historical fix</span>
+              </div>
+              <input id="new-title" placeholder="Incident title" required />
+              <textarea id="new-root" placeholder="Root cause" required></textarea>
+              <textarea id="new-fix" placeholder="Previous solution or mitigation" required></textarea>
+              <div class="form-grid">
+                <input id="new-team" placeholder="Team involved" required />
+                <input id="new-timeline" placeholder="Resolution timeline" value="45 min" required />
+              </div>
+              <div class="form-grid">
+                <select id="new-service" aria-label="Service">
+                  <option value="payments">Payments</option>
+                  <option value="checkout">Checkout</option>
+                  <option value="events">Events</option>
+                </select>
+                <select id="new-severity" aria-label="Severity">
+                  <option value="sev2">SEV2</option>
+                  <option value="sev1">SEV1</option>
+                  <option value="sev3">SEV3</option>
+                </select>
+              </div>
+              <button type="submit">Commit to Memory</button>
+              <p id="memory-save-state" aria-live="polite"></p>
+            </form>
+          </div>
+
+          <div class="results-panel glass">
+            <div class="panel-title">
+              <span>Similar incident recommendations</span>
+              <strong id="result-count">3 matches</strong>
+            </div>
+            <div class="result-tools" aria-label="Incident recommendation controls">
+              <button class="active" type="button" data-sort="similarity">Similarity</button>
+              <button type="button" data-sort="timeline">Fastest fix</button>
+              <button type="button" data-sort="custom">New memory</button>
+            </div>
+            <div id="incident-results" class="incident-results"></div>
+            <aside class="memory-detail" id="memory-detail" aria-live="polite"></aside>
+            <button class="plan-button" id="generate-plan" type="button">Generate AI Investigation Plan</button>
+          </div>
+        </div>
+      </section>
+
+      <section id="memory" class="memory-section">
+        <div class="section-heading narrow">
+          <span class="kicker">AI memory engine</span>
+          <h2>Incidents become a neural knowledge graph.</h2>
+          <p>Every alert, Slack thread, ticket, trace, deployment, and postmortem is embedded, clustered, linked, and continuously re-learned.</p>
+        </div>
+        <div class="memory-layout">
+          <div class="graph glass">
+            <button class="node node-a active" type="button" data-graph="Vector memory stores symptoms, logs, tickets, traces, and fixes as searchable embeddings.">Vector memory</button>
+            <button class="node node-b" type="button" data-graph="Temporal learning understands how alerts, deploys, investigation, mitigation, and recovery unfolded over time.">Temporal learning</button>
+            <button class="node node-c" type="button" data-graph="Incident clustering groups recurring failures across services, teams, and dependency chains.">Incident clusters</button>
+            <button class="node node-d" type="button" data-graph="The knowledge graph links owners, systems, root causes, runbooks, and blast radius.">Knowledge graph</button>
+            <button class="node node-e" type="button" data-graph="Runbook actions are ranked by confidence, speed, reversibility, and historical success.">Runbook actions</button>
+            <svg viewBox="0 0 700 420" preserveAspectRatio="none" aria-hidden="true">
+              <path d="M115 100 C230 35 325 260 455 94" />
+              <path d="M125 315 C245 210 360 350 580 290" />
+              <path d="M455 94 C500 165 542 210 580 290" />
+              <path d="M310 218 C250 120 180 235 125 315" />
+              <path d="M310 218 C380 145 520 145 575 135" />
+            </svg>
+            <div class="graph-core">MEMORY GRAPH</div>
+          </div>
+          <div class="memory-copy glass">
+            <h3>Continuous operational learning</h3>
+            <p id="graph-insight">Vector memory stores symptoms, logs, tickets, traces, and fixes as searchable embeddings.</p>
+            <div class="capability-list">
+              <span>Vector memory storage</span>
+              <span>Knowledge graph</span>
+              <span>Incident clustering</span>
+              <span>Temporal learning</span>
+              <span>Continuous updates</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="intelligence" class="intelligence">
+        <div class="section-heading">
+          <span class="kicker">Root cause intelligence</span>
+          <h2>Predict the cause. Rank the risk. Move first.</h2>
+        </div>
+        <div class="intel-grid">
+          <div class="radar glass">
+            <div class="radar-sweep"></div>
+            <div class="radar-center"></div>
+            <span class="radar-label label-a">Latency</span>
+            <span class="radar-label label-b">DB load</span>
+            <span class="radar-label label-c">Deploy risk</span>
+            <span class="radar-label label-d">Dependency</span>
+          </div>
+          <div class="risk-board glass">
+            <div class="panel-title">
+              <span>Likely root causes</span>
+              <strong id="risk-score">Risk 87</strong>
+            </div>
+            <div class="risk-row">
+              <span id="risk-a-label">Connection pool saturation</span>
+              <meter id="risk-a-meter" value="0.91"></meter>
+              <strong id="risk-a-value">91%</strong>
+            </div>
+            <div class="risk-row">
+              <span id="risk-b-label">Regional payment gateway degradation</span>
+              <meter id="risk-b-meter" value="0.78"></meter>
+              <strong id="risk-b-value">78%</strong>
+            </div>
+            <div class="risk-row">
+              <span id="risk-c-label">Recent checkout deploy regression</span>
+              <meter id="risk-c-meter" value="0.64"></meter>
+              <strong id="risk-c-value">64%</strong>
+            </div>
+            <div class="action-strip">
+              <span>Suggested next action</span>
+              <strong id="next-action">Increase pool size, route traffic to us-east-2, replay failed payments.</strong>
+            </div>
+          </div>
+          <div class="prediction glass">
+            <div class="panel-title">
+              <span>Predictive failure detection</span>
+              <strong>36 min horizon</strong>
+            </div>
+            <div class="sparkline" aria-hidden="true"><i></i><i></i><i></i><i></i><i></i><i></i><i></i><i></i></div>
+            <p>Anomaly trend is accelerating across checkout latency, database waits, and payment retries.</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="timeline-section">
+        <div class="section-heading narrow">
+          <span class="kicker">Incident timeline replay</span>
+          <h2>Replay the path from alert to recovery.</h2>
+        </div>
+        <div class="timeline glass">
+          <div class="timeline-progress"></div>
+          <button class="time-step active" type="button"><strong>Alert</strong><span>P95 latency crossed SLO</span></button>
+          <button class="time-step" type="button"><strong>Investigation</strong><span>Checkout traces linked</span></button>
+          <button class="time-step" type="button"><strong>Root Cause</strong><span>DB connection pool exhausted</span></button>
+          <button class="time-step" type="button"><strong>Fix</strong><span>Autoscale and optimize query</span></button>
+          <button class="time-step" type="button"><strong>Recovery</strong><span>Traffic normalized</span></button>
+        </div>
+      </section>
+
+      <section id="agent" class="agent-section">
+        <div class="chat glass">
+          <div class="agent-head">
+            <div class="avatar">
+              <span></span>
+            </div>
+            <div>
+              <strong>Conversational AI Agent</strong>
+              <small>Thinking across incident memory</small>
+            </div>
+          </div>
+          <div class="chat-body" id="chat-body">
+            <div class="msg user">Have we seen this outage before?</div>
+            <div class="msg ai">Yes. I found 3 high-similarity incidents. The strongest match is a payment timeout from Nov 12 with 96% similarity. Recommended first action: expand DB pool and reroute degraded gateway traffic.</div>
+          </div>
+          <div class="chat-input">
+            <input id="chat-input" value="Generate a recovery summary for the incident commander" />
+            <button id="chat-send" type="button">Ask</button>
+          </div>
+        </div>
+        <div class="autonomy glass">
+          <div class="panel-title">
+            <span>Autonomous resolution suggestions</span>
+            <strong>Confidence 94%</strong>
+          </div>
+          <div class="resolution-stack">
+            <button type="button">Rollback latest checkout deployment</button>
+            <button type="button">Scale payment-api replicas to 18</button>
+            <button type="button">Restart saturated worker pool</button>
+            <button type="button">Open coordinated recovery room</button>
+          </div>
+          <p class="action-status" id="action-status">Select an action to simulate autonomous execution.</p>
+          <div class="confidence">
+            <span></span>
+          </div>
+        </div>
+      </section>
+
+      <section class="future">
+        <div class="section-heading">
+          <span class="kicker">Advanced future systems</span>
+          <h2>A platform for autonomous operations.</h2>
+        </div>
+        <div class="feature-cloud">
+          <article>Multi-agent collaboration</article>
+          <article>Self-learning memory</article>
+          <article>AI copilots</article>
+          <article>Voice incident assistant</article>
+          <article>Generative incident summaries</article>
+          <article>Organization-wide intelligence graph</article>
+          <article>Explainable AI reasoning</article>
+          <article>Cross-team learning engine</article>
+        </div>
+      </section>
+
+      <section id="stack" class="stack-section">
+        <div class="section-heading narrow">
+          <span class="kicker">Architecture</span>
+          <h2>Built like a modern AI ops platform.</h2>
+        </div>
+        <div class="stack-grid">
+          <div class="stack-card"><span>Frontend</span><strong>React + Next.js + Tailwind</strong></div>
+          <div class="stack-card"><span>AI</span><strong>RAG + Vector DB + LLM + Embeddings</strong></div>
+          <div class="stack-card"><span>Backend</span><strong>FastAPI + PostgreSQL</strong></div>
+          <div class="stack-card"><span>Cloud</span><strong>AWS + Kubernetes</strong></div>
+        </div>
+      </section>
+    </main>
+
+    <div class="floating-agent" aria-label="Floating AI assistant">
+      <div class="mini-avatar"></div>
+      <div>
+        <strong>Agent online</strong>
+        <span>Watching production memory</span>
+      </div>
+    </div>
+
+    <footer>
+      <p>From forgotten incidents to organizational intelligence.</p>
+    </footer>
+
+    <script src="./app.js"></script>
+  </body>
+</html>
